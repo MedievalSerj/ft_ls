@@ -12,8 +12,7 @@
 
 #ifndef _FT_LS_FT_LS_H
 # define _FT_LS_FT_LS_H
-# include "libft/libft.h"
-# include "libftprintf/libftprintf.h"
+# include "libft.h"
 # include <sys/xattr.h>
 # include <dirent.h>
 # include <sys/stat.h>

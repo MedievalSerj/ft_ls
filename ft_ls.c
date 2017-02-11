@@ -97,6 +97,7 @@ int		main(int ac, char **av)
 	t_list	*targets;
 	t_list	*next;
 
+	targets = NULL;
 	flags = init_flags();
 	if (ac == 1)
 	{
@@ -104,7 +105,8 @@ int		main(int ac, char **av)
 		ft_lstadd(&targets, next);
 	}
 	else
-		targets = proc_input(ac, av, flags);
+		if (!(targets = proc_input(ac, av, flags)))
+			return (0);
 	dir_name_flag(targets, flags);
 	if (flags->l)
 		get_initial_width(targets);

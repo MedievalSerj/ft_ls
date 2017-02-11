@@ -16,21 +16,21 @@ char		get_filetype(mode_t mode)
 {
 	char type;
 
-	if ((mode & S_IFWHT) == S_IFWHT)
+	if ((mode & 0160000) == 0160000)
 		type = 'w';
-	else if ((mode & S_IFSOCK) == S_IFSOCK)
+	else if ((mode & 0140000) == 0140000)
 		type = 's';
-	else if ((mode & S_IFLNK) == S_IFLNK)
+	else if ((mode & 0120000) == 0120000)
 		type = 'l';
-	else if ((mode & S_IFREG) == S_IFREG)
+	else if ((mode & 0100000) == 0100000)
 		type = '-';
-	else if ((mode & S_IFBLK) == S_IFBLK)
+	else if ((mode & 0060000) == 0060000)
 		type = 'b';
-	else if ((mode & S_IFDIR) == S_IFDIR)
+	else if ((mode & 0040000) == 0040000)
 		type = 'd';
-	else if ((mode & S_IFCHR) == S_IFCHR)
+	else if ((mode & 0020000) == 0020000)
 		type = 'c';
-	else if ((mode & S_IFIFO) == S_IFIFO)
+	else if ((mode & 0010000) == 0010000)
 		type = 'p';
 	else
 		type = 'x';
