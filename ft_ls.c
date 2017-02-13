@@ -104,9 +104,8 @@ int		main(int ac, char **av)
 		next = ft_lstnew(get_info(".", flags), sizeof(t_info));
 		ft_lstadd(&targets, next);
 	}
-	else
-		if (!(targets = proc_input(ac, av, flags)))
-			return (0);
+	else if (!(targets = proc_input(ac, av, flags)))
+		return (0);
 	dir_name_flag(targets, flags);
 	if (flags->l)
 		get_initial_width(targets);
