@@ -50,3 +50,11 @@ void	print_no_such_file(t_list *elem)
 {
 	ft_printf("ft_ls: %s: No such file or directory\n", elem->content);
 }
+
+void	sub_2_process_dir(t_flags *flags, t_list *elem)
+{
+	if (flags->d_newline)
+		ft_putendl("");
+	if (flags->d_n)
+		ft_printf("%s:\n", ((t_info*)elem->content)->path);
+}

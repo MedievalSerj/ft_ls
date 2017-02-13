@@ -25,25 +25,20 @@ SRC = ft_ls.c ft_inspect_file.c \
 				proc_links.c \
 				proc_flags.c 
 LIB_FT = libft.a
-LIB_PRINTF = libftprintf.a
 OBJ = $(SRC:.c=.o)
 FLG = -Wall -Wextra -Werror
 all:    $(NAME)
 $(NAME): $(OBJ)
 	make -C ./libft
-	make -C ./libftprintf
-	gcc $(OBJ) -o $(NAME) libft/$(LIB_FT) libftprintf/$(LIB_PRINTF)
+	gcc $(OBJ) -o $(NAME) libft/$(LIB_FT)
 %.o: %.c
 	gcc -c $(FLG) -o $@ $<
 cleanlib:
 	make clean -C ./libft
-	make clean -C ./libftprintf 
 fcleanlib:
 	make fclean -C ./libft
-	make fclean -C ./libftprintf 
 clean: cleanlib
 	rm -f $(OBJ)
 fclean: clean fcleanlib
 	rm -f $(NAME)
 re: fclean all
-

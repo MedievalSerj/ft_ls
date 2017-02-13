@@ -18,12 +18,12 @@ void	process_dir(t_flags *flags, t_list *elem)
 	t_list	*tar;
 	char	*path;
 
-	if (flags->d_newline)
-		ft_putendl("");
-	if (flags->d_n)
-		ft_printf("%s:\n", ((t_info*)elem->content)->path);
+	sub_2_process_dir(flags, elem);
 	if ((filenames = list_dir(((t_info*)elem->content)->path)) == NULL)
+	{
+		flags->d_newline = 1;
 		return ;
+	}
 	path = ((t_info*)(elem->content))->path;
 	tar = get_t_list_infos(filenames, flags, path);
 	if (tar)
@@ -51,8 +51,16 @@ void	sub_process_dir(t_list *targets, t_flags *flags)
 			!ft_strequ(((t_info*)(tmp->content))->name, ".")
 			&& !ft_strequ(((t_info*)(tmp->content))->name, ".."))
 		{
-			flags->d_n = 1;
-			process_dir(flags, tmp);
+			if (flags->a)
+			{
+				flags->d_n = 1;
+				process_dir(flags, tmp);
+			}
+			else if (!flags->a && (((t_info*)(tmp->content))->name[0] != '.'))
+			{
+				flags->d_n = 1;
+				process_dir(flags, tmp);
+			}
 		}
 		tmp = tmp->next;
 	}

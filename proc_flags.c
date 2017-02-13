@@ -50,7 +50,7 @@ void	def_lags(t_flags *flags, char *av)
 		else
 		{
 			ft_printf("ft_ls: illegal option -- %c\n", av[i]);
-			ft_putstr("usage: ft_ls [-lRart] [file ...]\n");
+			ft_putstr("usage: ft_ls [-lRart1] [file ...]\n");
 			exit(0);
 		}
 	}

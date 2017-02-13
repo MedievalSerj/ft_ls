@@ -54,12 +54,7 @@ static void	print_info_long(t_info *info)
 	ft_put_str_w(info->day, 3, 0);
 	print_time_year(info);
 	if (info->type != 'l')
-	{
-		if (!ft_strequ(info->name, &(info->path[2])))
-			ft_put_str_w(info->path, ft_strlen(info->path) + 1, 0);
-		else
-			ft_put_str_w(info->name, ft_strlen(info->name) + 1, 0);
-	}
+		ft_put_str_w(info->path, ft_strlen(info->path) + 1, 0);
 	else
 		print_link_long(info);
 	ft_putendl("");
@@ -71,14 +66,9 @@ static void	print_info_short(t_info *info)
 
 	name = info->name;
 	if (info->a == 0 && name[0] != '.')
-	{
-		if (!ft_strequ(name, &(info->path[2])))
-			ft_printf("%s\n", info->path);
-		else
-			ft_printf("%s\n", name);
-	}
+		ft_printf("%s\n", info->path);
 	else if (info->a == 1)
-		ft_printf("%s\n", name);
+		ft_printf("%s\n", info->path);
 }
 
 void		print_info_global(t_list *elem)

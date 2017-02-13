@@ -12,7 +12,7 @@
 
 #ifndef _FT_LS_FT_LS_H
 # define _FT_LS_FT_LS_H
-# include "libft.h"
+# include "libft/libft.h"
 # include <sys/xattr.h>
 # include <dirent.h>
 # include <sys/stat.h>
@@ -102,4 +102,5 @@ void			def_lags(t_flags *flags, char *av);
 void			print_info_global_dir(t_list *elem);
 void			sub_process_dir(t_list *targets, t_flags *flags);
 void			print_time_year(t_info *info);
+void			sub_2_process_dir(t_flags *flags, t_list *elem);
 #endif
