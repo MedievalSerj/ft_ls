@@ -42,18 +42,27 @@ char		*get_modes(mode_t mode)
 	char	*modes;
 	int		n;
 
-	n = mode & 0777;
+	n = mode & 07777;
 	modes = ft_strnew(11);
 	modes[0] = get_filetype(mode);
 	modes[1] = (n & 0400) == 0400 ? (char)'r' : (char)'-';
 	modes[2] = (n & 0200) == 0200 ? (char)'w' : (char)'-';
-	modes[3] = (n & 0100) == 0100 ? (char)'x' : (char)'-';
+	if ((n & 0100) == 0100)
+		modes[3] = (n & 04000) == 04000 ? (char)'s' : (char)'x';
+	else
+		modes[3] = (n & 04000) == 04000 ? (char)'S' : (char)'-';
 	modes[4] = (n & 040) == 040 ? (char)'r' : (char)'-';
 	modes[5] = (n & 020) == 020 ? (char)'w' : (char)'-';
-	modes[6] = (n & 010) == 010 ? (char)'x' : (char)'-';
+	if ((n & 010) == 010)
+		modes[6] = (n & 02000) == 02000 ? (char)'s' : (char)'x';
+	else
+		modes[6] = (n & 02000) == 02000 ? (char)'S' : (char)'-';
 	modes[7] = (n & 04) == 04 ? (char)'r' : (char)'-';
 	modes[8] = (n & 02) == 02 ? (char)'w' : (char)'-';
-	modes[9] = (n & 01) == 01 ? (char)'x' : (char)'-';
+	if ((n & 01000) == 01000)
+		modes[9] = 't';
+	else
+		modes[9] = (n & 01) == 01 ? (char)'x' : (char)'-';
 	return (modes);
 }
 

@@ -38,7 +38,7 @@ void	sub_get_info(char *path, t_info *info, struct stat *buf)
 	info->path = ft_strdup(path);
 	info->name = get_name(path);
 	info->type = get_filetype(buf->st_mode);
-	info->mode = buf->st_mode & 0777;
+	info->mode = buf->st_mode & 07777;
 	info->modes = get_modes(buf->st_mode);
 	info->n_links = buf->st_nlink;
 	info->c_n_links = ft_itoa(info->n_links);
